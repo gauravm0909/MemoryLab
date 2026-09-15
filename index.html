@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="MemoryLab: an interactive recurrent-memory learning artifact for the Pathway/DataForge 2026 track.">
+  <title>MemoryLab — Recurrent Memory Explorer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div><strong>MemoryLab</strong></div>
+    <nav><a href="#lab">Lab</a><a href="#research">BDH / BDH-CQ</a><a href="#sources">Sources</a></nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">DATAFORGE 2026 · PATHWAY TRACK</p>
+        <h1>See memory change while the model thinks.</h1>
+        <p class="lead">A small, deterministic recurrent associative-memory simulator. Add facts, change update strength, create interference, and compare the model's estimate with ground truth.</p>
+        <div class="claim"><b>Falsifiable claim</b><br>A fixed-size recurrent state can process a sequence of unbounded duration without allocating a new memory slot for every token, but it can still forget through interference.</div>
+      </div>
+      <div class="hero-stat"><span id="statusDot"></span><b>LIVE</b><small>All experiment updates run in your browser.</small></div>
+    </section>
+
+    <section id="lab" class="grid">
+      <aside class="panel controls">
+        <div class="panel-head"><h2>Experiment controls</h2><button id="resetBtn" class="ghost">Reset</button></div>
+        <label>Memory update strength <output id="alphaOut">0.65</output><input id="alpha" type="range" min="0.05" max="1" step="0.05" value="0.65"></label>
+        <label>State decay <output id="decayOut">0.02</output><input id="decay" type="range" min="0" max="0.15" step="0.01" value="0.02"></label>
+        <label>State dimension <output id="dimOut">12</output><input id="dim" type="range" min="6" max="24" step="2" value="12"></label>
+        <div class="button-row"><button id="presetBtn">Run guided preset</button><button id="conflictBtn" class="danger">Inject conflict</button></div>
+        <div class="fact-input">
+          <input id="factKey" placeholder="Concept (e.g. France)" value="France">
+          <input id="factValue" placeholder="Answer (e.g. Paris)" value="Paris">
+          <button id="addBtn">Write memory</button>
+        </div>
+        <div class="query-row"><input id="query" placeholder="Ask: What is the capital of France?" value="France"><button id="queryBtn">Recall</button></div>
+        <p class="hint">Controls are real variables. Every write updates the same fixed-size matrix; no new memory slot is allocated for each fact.</p>
+      </aside>
+
+      <section class="panel state-panel">
+        <div class="panel-head"><h2>Visible state</h2><span id="stepLabel">step 0</span></div>
+        <canvas id="heatmap" width="720" height="430" aria-label="Memory matrix heatmap"></canvas>
+        <div class="legend"><span>low state</span><span class="gradient"></span><span>high state</span></div>
+        <div class="metrics">
+          <div><span>State size</span><b id="stateSize">12 × 12</b></div>
+          <div><span>Facts processed</span><b id="factsCount">0</b></div>
+          <div><span>Non-zero cells</span><b id="nonzero">0</b></div>
+          <div><span>Memory footprint</span><b id="footprint">144 cells</b></div>
+        </div>
+      </section>
+    </section>
+
+    <section class="grid lower">
+      <section class="panel result-panel">
+        <div class="panel-head"><h2>Prediction vs ground truth</h2><span id="resultBadge" class="badge neutral">No query</span></div>
+        <div class="answer-grid">
+          <div><span>Query</span><strong id="queryShown">—</strong></div>
+          <div><span>Model prediction</span><strong id="prediction">—</strong></div>
+          <div><span>Ground truth</span><strong id="truth">—</strong></div>
+          <div><span>Cosine confidence</span><strong id="confidence">—</strong></div>
+        </div>
+        <p id="explanation" class="explanation">Run the preset or write a fact, then query it. Try a conflict to expose interference.</p>
+      </section>
+      <section class="panel timeline-panel">
+        <div class="panel-head"><h2>Event timeline</h2><span id="eventCount">0 events</span></div>
+        <div id="timeline" class="timeline"></div>
+      </section>
+    </section>
+
+    <section id="research" class="research">
+      <div class="section-title"><p class="eyebrow">RESEARCH CONNECTION</p><h2>How the experiment maps to BDH / BDH-CQ</h2></div>
+      <div class="research-grid">
+        <article><span class="source-type">PUBLISHED</span><h3>BDH: synaptic memory</h3><p>The BDH paper describes a brain-inspired architecture in which inference-time working memory relies on synaptic plasticity and Hebbian learning. Pathway's “Equations of Reasoning” explain local read/write dynamics and synaptic state.</p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2509.26507">Read BDH paper →</a></article>
+        <article><span class="source-type">PUBLISHED</span><h3>BDH-CQ: recurrent latent reasoning</h3><p>BDH-CQ uses inference-time inputs to update recurrent memory, then performs iterative computation in latent space without verbalizing intermediate reasoning. This is the research-side analogue of our visible-state lesson.</p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2608.09888">Read BDH-CQ paper →</a></article>
+        <article><span class="source-type">PATHWAY RESEARCH</span><h3>Equations of Reasoning</h3><p>The Pathway article describes four local rounds: memory read, synaptic reweighting, gated neuron dynamics, and state update. Our toy system deliberately abstracts this into a smaller matrix-memory experiment.</p><a target="_blank" rel="noopener" href="https://pathway.com/research/the-equations-of-reasoning">Read research article →</a></article>
+      </div>
+      <div class="honesty"><b>Evidence boundary:</b> MemoryLab is an independent educational toy system. It is <u>not</u> an official BDH or BDH-CQ implementation and its results must not be presented as BDH benchmark results.</div>
+    </section>
+
+    <section id="sources" class="sources panel">
+      <div class="panel-head"><h2>Sources & provenance</h2></div>
+      <ol>
+        <li><a target="_blank" rel="noopener" href="https://arxiv.org/abs/2608.09888">Engdahl et al. (2026), BDH-CQ: In-Context Learning with Recurrent Latent Reasoning.</a></li>
+        <li><a target="_blank" rel="noopener" href="https://pathway.com/research/the-equations-of-reasoning">Pathway (2026), The Equations of Reasoning.</a></li>
+        <li><a target="_blank" rel="noopener" href="https://pathway.com/research/introducing-bdh-cq">Pathway (2026), Reasoning at a Fraction of the Compute / Introducing BDH-CQ.</a></li>
+        <li>DataForge 2026: Pathway Track problem statement — provided by the competition organizers in this project.</li>
+      </ol>
+    </section>
+  </main>
+  
+  <script src="app.js"></script>
+</body>
+</html>

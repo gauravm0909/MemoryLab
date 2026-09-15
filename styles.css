@@ -1,0 +1,188 @@
+:root{
+    --navy:#082341;--blue:#007ddc;
+    --cyan:#00b4d7;--green:#19a569;
+    --orange:#eb8c23;--red:#c8414b;
+    --purple:#7350c3;--bg:#f4f7fb;
+    --card:#fff;--text:#1e2d41;--muted:#6a7480;
+    --line:#dce6ef}*{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);
+        color:var(--text);font:15px/1.55 
+        Inter,system-ui,-apple-system,Segoe UI,
+        Roboto,Arial,sans-serif}.topbar{
+            position:sticky;top:0;z-index:10;
+            height:64px;background:var(--navy);color:#fff;
+            display:flex;align-items:center;
+            justify-content:space-between;
+            padding:0 max(24px,calc((100vw - 1180px)/2))}.topbar strong{
+                font-size:20px}.tag{
+                    margin-left:10px;
+                    font-size:10px;
+                    border:1px solid #7cc8ed;border-radius:999px;
+                    padding:4px 8px;color:#bde7f8}.topbar nav{
+                        display:flex;gap:22px}.topbar a{
+                            color:#d8effa;text-decoration:none}.hero{
+                                max-width:1180px;margin:0 auto;
+                                padding:60px 24px 38px;display:grid;
+                                grid-template-columns:1fr 240px;gap:35px}.eyebrow{
+                                    font-size:11px;font-weight:800;
+                                    letter-spacing:.14em;
+                                    color:var(--blue);
+                                    margin:0 0 9px}h1{
+                                        font-size:clamp(34px,5vw,58px);
+                                        line-height:1.02;margin:0 0 18px;
+                                        color:var(--navy);max-width:780px}.lead{
+                                            font-size:18px;max-width:760px;
+                                            color:#435468}.claim{
+                                                margin-top:24px;
+                                                border-left:5px solid var(--orange);
+                                                background:#fff;padding:17px 19px;
+                                                border-radius:12px;
+                                                box-shadow:0 5px 24px #08234110}.hero-stat{
+                                                    align-self:center;
+                                                    background:var(--navy);
+                                                    color:#fff;border-radius:20px;
+                                                    padding:26px;display:flex;
+                                                    flex-direction:column;gap:8px;
+                                                    box-shadow:0 15px 35px #08234120
+                                                }.hero-stat small{color:#b9d5e8}.hero-stat span{
+                                                    width:11px;height:11px;
+                                                    border-radius:50%;
+                                                    background:#28d17c;
+                                                    display:inline-block;
+                                                    box-shadow:0 0 0 5px #28d17c22
+                                                }.grid{
+                                                    max-width:1180px;
+                                                    margin:0 auto;padding:0 24px 24px;
+                                                    display:grid;grid-template-columns:360px 1fr;
+                                                    gap:22px}.lower{
+                                                        grid-template-columns:1fr 1fr
+                                                    }.panel{
+                                                        background:var(--card);
+                                                        border:1px solid var(--line);
+                                                        border-radius:18px;
+                                                        box-shadow:0 8px 30px #0823410b;
+                                                        padding:20px}.panel-head
+                                                        {display:flex;align-items:center;
+                                                            justify-content:space-between;
+                                                            gap:12px;margin-bottom:16px
+                                                        }.panel-head h2{font-size:17px;
+                                                            margin:0;color:var(--navy)}button{
+                                                                border:0;border-radius:10px;
+                                                                padding:10px 13px;
+                                                                background:var(--blue);
+                                                                color:#fff;
+                                                                font-weight:750;cursor:pointer}button:hover{
+                                                                    filter:brightness(.95)}button.ghost{
+                                                                        background:#edf4f9;color:var(--navy)
+                                                                    }button.danger{background:var(--red)}.button-row{
+                                                                        display:grid;
+                                                                        grid-template-columns:1fr 1fr;
+                                                                        gap:9px;margin:13px 0}.controls label{
+                                                                            display:block;font-size:12px;
+                                                                            font-weight:750;color:#445366;
+                                                                            margin:16px 0}.controls output{
+                                                                                float:right;color:var(--blue);
+                                                                                font-weight:800
+                                                                            }.controls input[type=range]{
+                                                                                display:block;width:100%;
+                                                                                margin-top:7px;
+                                                                                accent-color:var(--blue)
+                                                                            }input[type=text],input:not([type]){
+                                                                                width:100%;padding:11px 12px;
+                                                                                border:1px solid var(--line);
+                                                                                border-radius:10px;outline:none;
+                                                                                font:inherit;background:#fff
+                                                                            }.fact-input,.query-row{display:grid;
+                                                                                grid-template-columns:1fr 1fr;
+                                                                                gap:8px;margin-top:10px
+                                                                            }.fact-input button,.query-row button{
+                                                                                grid-column:1/-1}.query-row{
+                                                                                    grid-template-columns:1fr auto
+                                                                                }.query-row button{grid-column:auto
+                                                                                }.hint{font-size:11px;color:var(--muted);
+                                                                                    margin-top:14px}.state-panel canvas{
+                                                                                        width:100%;height:430px;
+                                                                                        background:#071a2d;
+                                                                                        border-radius:12px;display:block}.legend{
+                                                                                            display:flex;align-items:center;
+                                                                                            gap:9px;font-size:10px;
+                                                                                            color:var(--muted);margin:8px 2px
+                                                                                        }.gradient{height:9px;flex:1;
+                                                                                            border-radius:99px;
+                                                                                            background:linear-gradient(90deg,#071a2d,#007ddc,#00b4d7,#f6d365)}.metrics
+                                                                                            {display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:12px
+                                                                                            }.metrics div{
+                                                                                                background:#f6f9fc;border-radius:10px;padding:10px
+                                                                                            }.metrics span,.answer-grid span{
+                                                                                                display:block;color:var(--muted);font-size:10px
+                                                                                            }.metrics b{font-size:14px;color:var(--navy)}.badge{
+                                                                                                font-size:10px;border-radius:999px;
+                                                                                                padding:5px 8px;font-weight:800}.badge.good
+                                                                                                {background:#dff7eb;color:#087b4d
+                                                                                                }.badge.bad{background:#ffe5e7;color:#9c2631}.badge.neutral{
+                                                                                                    background:#edf2f6;color:#647281}.answer-grid{
+                                                                                                        display:grid;grid-template-columns:1fr 1fr;gap:12px
+                                                                                                    }.answer-grid div{background:#f7f9fc;border-radius:11px;padding:13px
+                                                                                                    }.answer-grid strong{
+                                                                                                        font-size:17px;color:var(--navy)}.explanation{
+                                                                                                            font-size:13px;color:#536274}.timeline{
+                                                                                                                max-height:245px;overflow:auto;
+                                                                                                                display:flex;flex-direction:column;
+                                                                                                                gap:8px}.event{padding:9px 11px;
+                                                                                                                    border-left:3px solid var(--blue);
+                                                                                                                    background:#f7f9fc;
+                                                                                                                    border-radius:8px;font-size:12px
+                                                                                                                }.event b{color:var(--navy)}.research{
+                                                                                                                    max-width:1180px;margin:10px auto;
+                                                                                                                    padding:38px 24px}.section-title h2{
+                                                                                                                        font-size:30px;margin:0 0 22px;
+                                                                                                                        color:var(--navy)}.research-grid{
+                                                                                                                            display:grid;
+                                                                                                                            grid-template-columns:repeat(3,1fr);gap:16px
+                                                                                                                        }.research-grid article{
+                                                                                                                            background:#fff;
+                                                                                                                            border:1px solid var(--line);border-radius:16px;
+                                                                                                                            padding:20px}.research-grid h3{margin:7px 0;
+                                                                                                                                color:var(--navy)}.research-grid p{font-size:13px;
+                                                                                                                                    color:#566577
+                                                                                                                                }.research-grid a,.sources a{
+                                                                                                                                    color:var(--blue);font-weight:750
+                                                                                                                                }.source-type{font-size:9px;font-weight:850;
+                                                                                                                                    letter-spacing:.12em;color:var(--purple)
+                                                                                                                                }.honesty{margin-top:16px;
+                                                                                                                                    padding:15px 18px;
+                                                                                                                                    border-radius:12px;
+                                                                                                                                    background:#fff7e9;
+                                                                                                                                    border:1px solid #f1d59b;
+                                                                                                                                    font-size:12px
+                                                                                                                                }.sources{
+                                                                                                                                    max-width:1180px;
+                                                                                                                                    margin:0 auto 40px
+                                                                                                                                }.sources li
+                                                                                                                                {margin:9px 0;
+                                                                                                                                    font-size:12px}footer{
+                                                                                                                                        text-align:center;
+                                                                                                                                        padding:24px;
+                                                                                                                                        background:var(--navy);
+                                                                                                                                        color:#b9d5e8;font-size:11px
+                                                                                                                                    }@media(max-width:900px){.hero{
+                                                                                                                                        grid-template-columns:1fr
+                                                                                                                                    }.grid,.lower{
+                                                                                                                                        grid-template-columns:1fr
+                                                                                                                                    }.research-grid{
+                                                                                                                                        grid-template-columns:1fr
+                                                                                                                                    }.metrics{
+                                                                                                                                        grid-template-columns:1fr 1fr
+                                                                                                                                    }.topbar nav{
+                                                                                                                                        display:none}
+                                                                                                                                    }@media(max-width:520px){.hero{
+                                                                                                                                        padding-top:38px
+                                                                                                                                    }.fact-input,.query-row{
+                                                                                                                                        grid-template-columns:1fr
+                                                                                                                                    }.query-row button{
+                                                                                                                                        grid-column:1
+                                                                                                                                    }.metrics{
+                                                                                                                                        grid-template-columns:1fr 1fr
+                                                                                                                                    }.state-panel canvas{height:300px}}
+                                                                                                                                    
